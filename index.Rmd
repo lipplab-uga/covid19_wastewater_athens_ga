@@ -7,9 +7,10 @@ output:
 ---
 
 
-[space filler] Plot Title 
+[space #1] Plot Title/Introduction
 
 ```{r covid_master_plot, fig.hold='hold', out.height = "100%", out.width = "100%", echo=FALSE}
 knitr::include_graphics("./athens_covid_wastewater_master_plot.png")
 ```
 
+[space #2] Ful
