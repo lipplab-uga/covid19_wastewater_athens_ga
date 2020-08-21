@@ -11,7 +11,7 @@
 
 
 
-<title>About the authors</title>
+<title>Research Narrative</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -235,6 +238,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -242,6 +314,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -296,15 +378,37 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About the authors</h1>
+<h1 class="title toc-ignore">Research Narrative</h1>
+<h4 class="date">8/20/2020</h4>
 
 </div>
 
 
-<p>Test</p>
+<div style="margin-bottom:25px;">
+
+</div>
+<div id="title-placeholder" class="section level2">
+<h2>[title placeholder]</h2>
+Wastewater surveillance is an emerging tool for monitoring disease outbreaks. Coupled with clinical surveillance, wastewater surveillance can be used to estimate the level of viruses circulating in local population. To better understand the outbreak of the novel Coronavirus disease-19 (COVID-19) on a local level, we are monitoring wastewater samples from three water reclamation facilities in Athens, GA. Wastewater samples are collected weekly and tested to detect the disease-causing virus, SARS-CoV-2.<br />
+
+<div style="margin-bottom:10px;">
+
+</div>
+Each sample is a composite of the wastewater received by the water reclamation facility in a single day. By examining these samples, we are capturing a snapshot into the health of the entire community that contributes to the sewershed. This wastewater-based research provides a new approach to epidemiology; sewage surveillance may be used to predict the total burden of disease at a community-scale, without extensive clinical sampling.
+<div style="margin-bottom:10px;">
+
+</div>
+We are sharing here some of the preliminary results of our wastewater monitoring program. This weekly monitoring is conducted in partnership between Athens-Clarke County Utilities, the Lipp Laboratory, and the College of Public Health at the University of Georgia. Our objective is to critically examine the use of SARS-CoV-2 wastewater-based epidemiology approaches for detection and surveillance of SARS-CoV-2 in our local community.
+<div style="margin-bottom:10px;">
+
+</div>
+<p>We are developing and evaluating our methods in real-time. We will share with you our weekly results and newest developments. This data is intended to complement clinical-based COVID-19 surveillance data, that will together, inform public health decisions.</p>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -337,6 +441,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

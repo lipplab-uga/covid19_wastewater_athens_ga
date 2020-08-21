@@ -7,22 +7,18 @@ output:
     toc_depth: 3
 ---
 
-
+Load all required libraries.
 ```{r}
 library(tidyverse)
-library(plotly)
-library(ggpubr)
-library(stringi)
-library(stringr)
 ```
 
+Read in raw data from RDS.
 ```{r}
 raw_data <- readRDS("./n1_n2_cleaned_cases.rds")
 ```
 
-
+Make a few small modifications to names and data for visualizations.
 ```{r}
-#can add new calcs here later if needed
 final_data <- raw_data %>% mutate(log_copy_per_L = log10(mean_copy_num_L)) %>%
   rename(Facility = wrf) %>%
   mutate(Facility = recode(Facility, 
@@ -31,7 +27,12 @@ final_data <- raw_data %>% mutate(log_copy_per_L = log10(mean_copy_num_L)) %>%
                            "CC" = "WRF C"))
 ```
 
-
+Create the plot: 
+1)Start with a basic bar plot to show Department of Public Health Data
+2)Layer a line plot to show 7-day moving average
+3)Layer a scatterplot to show wastewater data
+4)Layer a horizontal line and annotation to indicate the limit of detection (LOD) for RT-qPCR
+5)Finish with asthetics (note legend asthetics are split to maintain theme_classic)
 ```{r}
 clean_plot <- final_data %>% ggplot() + 
   geom_bar(aes(x = date, y = new_cases_clarke), stat = "sum", alpha = 0.35, fill = "#7570B3", show.legend = FALSE)
@@ -55,6 +56,7 @@ clean_plot <- clean_plot + scale_color_manual(na.translate = FALSE, values = c("
 clean_plot
 ```
 
+Save the plot!
 ```{r}
 ggsave(filename = "./athens_covid_wastewater_master_plot.png", plot = clean_plot)
 ```

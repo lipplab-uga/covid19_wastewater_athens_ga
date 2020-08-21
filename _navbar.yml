@@ -1,12 +1,14 @@
 title: "COVID-19 Wastewater Monitoring"
 type: inverse
 left:
+  - text: "Research Narrative"
+    href: ./research_narrative.html
+  - text: "Research Methods"
+    href: ./research_methods.html
   - text: "Code"
     menu:
       - text: "Figure Code"
         href: ./covid_wastewater_analysis.html
-  - text: "Research Methods"
-    href: ./research_methods.html
   - text: "About the Authors"
     href: ./author.html
 right:

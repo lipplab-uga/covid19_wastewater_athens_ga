@@ -1,18 +1,18 @@
 ---
 title: "COVID-19 Wastewater Monitoring Athens, GA"
-author: "Brought to you by the Lipp Lab: Department of Environmental Health Science, University of Georgia"
+author: "Lipp Lab, Department of Environmental Health Science, University of Georgia"
 output: 
   html_document:
     toc: FALSE
 ---
 
 <div style="margin-bottom:50px;">
-
+</div>
 
 ## COVID-19 Burden of Athens, GA
-
-<div style="margin-bottom:100px;">
-
+#### Daily cases, seven-day moving average, and wastewater detection
+<div style="margin-bottom:50px;">
+</div>
 
 ```{r covid_master_plot, fig.hold='hold', out.height = "100%", out.width = "100%", echo=FALSE}
 knitr::include_graphics("./athens_covid_wastewater_master_plot.png")

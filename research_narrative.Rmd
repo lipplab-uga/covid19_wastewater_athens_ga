@@ -1,0 +1,29 @@
+---
+title: "Research Narrative"
+date: "8/20/2020"
+output: html_document
+---
+
+<div style="margin-bottom:25px;">
+</div>
+
+## [title placeholder]
+
+
+Wastewater surveillance is an emerging tool for monitoring disease outbreaks. Coupled with clinical surveillance, wastewater surveillance can be used to estimate the level of viruses circulating in local population. 
+To better understand the outbreak of the novel Coronavirus disease-19 (COVID-19) on a local level, we are monitoring wastewater samples from three water reclamation facilities in Athens, GA. Wastewater samples are collected weekly and tested to detect the disease-causing virus, SARS-CoV-2.   
+<div style="margin-bottom:10px;">
+</div>
+
+Each sample is a composite of the wastewater received by the water reclamation facility in a single day. By examining these samples, we are capturing a snapshot into the health of the entire community that contributes to the sewershed. This wastewater-based research provides a new approach to epidemiology; sewage surveillance may be used to predict the total burden of disease at a community-scale, without extensive clinical sampling. 
+<div style="margin-bottom:10px;">
+</div>
+
+We are sharing here some of the preliminary results of our wastewater monitoring program. This weekly monitoring is conducted in partnership between Athens-Clarke County Utilities, the Lipp Laboratory, and the College of Public Health at the University of Georgia. Our objective is to critically examine the use of SARS-CoV-2 wastewater-based epidemiology approaches for detection and surveillance of SARS-CoV-2 in our local community. 
+<div style="margin-bottom:10px;">
+</div>
+
+We are developing and evaluating our methods in real-time. We will share with you our weekly results and newest developments. This data is intended to complement clinical-based COVID-19 surveillance data, that will together, inform public health decisions.
+
+
+
