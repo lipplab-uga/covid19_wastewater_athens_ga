@@ -1,13 +1,13 @@
 title: "Data Analysis Exercise Website"
 type: inverse
 left:
-  - text: "Analyses"
+  - text: "Tab 1"
     menu:
-      - text: "Continuous Outcome Analysis"
-        href: ./Continuous_Outcome_Analysis.html
+      - text: "Figure Code"
+        href: ./covid_wastewater_analysis.html
       - text: "Future Analysis"
-  - text: "About the Author"
-    href: ./Author.html
+  - text: "About the Authors"
+    href: ./author.html
 right:
   - icon: fa-github fa-lg
     href: URL-TO-THIS-REPOSITORY-HERE
