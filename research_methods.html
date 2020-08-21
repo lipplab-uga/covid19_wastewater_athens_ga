@@ -9,10 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Brought to you by the Lipp Lab: Department of Environmental Health Science, University of Georgia" />
+<meta name="author" content="William Norfolk" />
 
 
-<title>COVID-19 Wastewater Monitoring Athens, GA</title>
+<title>Research Methods</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -20,6 +20,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -236,6 +239,75 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
 
 </head>
 
@@ -243,6 +315,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -294,29 +376,19 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">COVID-19 Wastewater Monitoring Athens, GA</h1>
-<h4 class="author">Brought to you by the Lipp Lab: Department of Environmental Health Science, University of Georgia</h4>
+<h1 class="title toc-ignore">Research Methods</h1>
+<h4 class="author">William Norfolk</h4>
+<h4 class="date">8/20/2020</h4>
 
 </div>
 
 
-<div style="margin-bottom:50px;">
+<p>[place holder]</p>
 
 
-<div id="covid-19-burden-of-athens-ga" class="section level2">
-<h2>COVID-19 Burden of Athens, GA</h2>
-<div style="margin-bottom:100px;">
 
-
-<p><img src="athens_covid_wastewater_master_plot.png" width="100%" height="100%" /></p>
-<div id="insert-description-title" class="section level4">
-<h4>[insert description title]</h4>
-<p>Sewage samples have been collected weekly from the water reclamation facilities that serve Athens Clarke County (WRF A and WRF B). Samples are tested to detect and measure SARS-CoV-2, the virus that causes COVID-19. We measure by the virus by detecting two genes specific to SARS-CoV-2; the N1 and N2 nucleocapsid genes. These gene targets (N1 and N2) are measured and reported as a concentration (in copies per liter of wastewater). We predict that the changes in the concentration of SARS-CoV-2 in wastewater will reflect the trends of COVID-19 infection in the community. The daily number of new COVID-19 cases in Athens-Clarke County (grey) appear alongside the 10-day moving average of new cases (yellow). The theoretical limit of detection (LOD) is noted.</p>
 </div>
 </div>
-
-
-
 
 </div>
 
@@ -349,6 +421,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

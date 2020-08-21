@@ -1,11 +1,12 @@
-title: "COVID-19 Wastewater Monitoring Athens, GA"
+title: "COVID-19 Wastewater Monitoring"
 type: inverse
 left:
-  - text: "Tab 1"
+  - text: "Code"
     menu:
       - text: "Figure Code"
         href: ./covid_wastewater_analysis.html
-      - text: "Future Analysis"
+  - text: "Research Methods"
+    href: ./research_methods.html
   - text: "About the Authors"
     href: ./author.html
 right:
