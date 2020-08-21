@@ -10,6 +10,7 @@ output:
 Load all required libraries.
 ```{r}
 library(tidyverse)
+library(plotly)
 ```
 
 Read in raw data from RDS.
@@ -27,29 +28,30 @@ final_data <- raw_data %>% mutate(log_copy_per_L = log10(mean_copy_num_L)) %>%
                            "CC" = "WRF C"))
 ```
 
-Create the plot: 
-1)Start with a basic bar plot to show Department of Public Health Data
-2)Layer a line plot to show 7-day moving average
-3)Layer a scatterplot to show wastewater data
-4)Layer a horizontal line and annotation to indicate the limit of detection (LOD) for RT-qPCR
-5)Finish with asthetics (note legend asthetics are split to maintain theme_classic)
+Create the plot:  
+1)Start with a basic bar plot to show Department of Public Health Data  
+2)Layer a line plot to show 7-day moving average  
+3)Layer a scatterplot to show wastewater data  
+4)Layer a horizontal line and annotation to indicate the limit of detection (LOD) for RT-qPCR  
+5)Finish with asthetics (note legend asthetics are split to maintain theme_classic)  
 ```{r}
 clean_plot <- final_data %>% ggplot() + 
   geom_bar(aes(x = date, y = new_cases_clarke), stat = "sum", alpha = 0.35, fill = "#7570B3", show.legend = FALSE)
   
 clean_plot <- clean_plot + 
   geom_line(aes(x = date, y = X10_day_ave_clarke), size = 1, color ="#E6AB02") +           
-  geom_point(aes(x = date, y = log_copy_per_L*10, color = target, shape = Facility), size = 2) +
+  geom_point(aes(x = date, y = log_copy_per_L*10, color = target, shape = Facility), size = 2.5) +
   geom_hline(yintercept = 35.5, linetype = "dashed") +
   annotate("text", x = as.Date("2020-03-20"), y = 39, label = "LOD")
 
 clean_plot <- clean_plot + 
-  scale_y_continuous(limits = c(0,100), sec.axis = sec_axis(~. / 10, name = "SARS CoV-2 Log Copies Per L")) +
+  scale_y_continuous(limits = c(0,80), breaks = seq(0, 80, 20), 
+  sec.axis = sec_axis(~. / 10, name = "SARS CoV-2 Log Copies Per L")) +
   ylab("Clarke County Daily Cases") + xlab("Date") + 
   theme_classic() + guides(color=guide_legend("SARS CoV-2 Target")) 
 
 clean_plot <- clean_plot + 
-  theme(legend.position = "bottom") 
+  theme(legend.position = "none") #generating tidy legend as png file
 
 clean_plot <- clean_plot + scale_color_manual(na.translate = FALSE, values = c("#1B9E77", "#D95F02")) + scale_shape_manual(na.translate = FALSE, values = c(1:2))
 
@@ -60,4 +62,8 @@ Save the plot!
 ```{r}
 ggsave(filename = "./athens_covid_wastewater_master_plot.png", plot = clean_plot)
 ```
+
+
+
+
 
